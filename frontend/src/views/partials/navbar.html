@@ -1,0 +1,46 @@
+<header class="bg-light" ng-controller="HomeController">
+    <div class="container d-flex justify-content-between align-items-center py-3">
+        <a href="/index.html" class="d-flex align-items-center">
+            <img src="../../images/logo.png" alt="Logo" style="height: 50px;">
+        </a>
+        <nav class="nav">
+            <a class="nav-link text-dark px-3 py-2 rounded" href="/" style="transition: background-color 0.3s ease;">Home</a>
+            <a class="nav-link text-dark px-3 py-2 rounded" href="/about" style="transition: background-color 0.3s ease;">About</a>
+            <a class="nav-link text-dark px-3 py-2 rounded" href="/contact" style="transition: background-color 0.3s ease;">Contact</a>
+            <a class="nav-link text-dark px-3 py-2 rounded" href="/subscribe" style="transition: background-color 0.3s ease;">Subscribe</a>
+
+            <!-- Menampilkan nama pengguna dan tombol logout jika sudah login -->
+            <div ng-if="name !== 'Guest'" class="d-flex align-items-center">
+                <a href="#" class="nav-link text-dark px-3 py-2 rounded" ng-click="logout()" style="transition: background-color 0.3s ease;">Logout</a>
+                <span class="nav-link text-dark user-name px-3 py-2">{{ name }}</span>
+            </div>
+
+            <!-- Menampilkan tombol login jika belum login -->
+            <div ng-if="name === 'Guest'" class="d-flex align-items-center">
+                <a class="nav-link text-dark px-3 py-2 rounded" href="/login" style="transition: background-color 0.3s ease;">Login</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+    .user-name {
+        font-weight: bold;
+        font-size: 1.1rem;
+        padding-left: 10px;
+        border-left: 2px solid #54595e;
+    }
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .nav {
+            flex-direction: column;
+            align-items: center;
+        }
+        .nav-link {
+            margin: 5px 0;
+        }
+    }
+</style>

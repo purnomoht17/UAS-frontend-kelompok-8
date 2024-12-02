@@ -15,5 +15,19 @@ class AuthController {
       return next(error);
     }
   }
+
+  // Fungsi logout
+  static logout(req, res) {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Error logging out:", err); // Log error logout
+        return res.status(500).json({ error: "Error logging out", details: err.message });
+      }
+
+      // Redirect ke halaman login dengan pesan sukses
+      res.redirect("/login?logout=success");
+    });
+  }
 }
+
 module.exports = AuthController;

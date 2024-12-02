@@ -39,7 +39,22 @@ class AuthAdminService {
       throw error; // Mengembalikan error agar dapat ditangani oleh controller
     }
   }
-  
-}
+  static async logout(req) {
+    try {
+      // Hapus token pada sisi client (biasanya di frontend)
+      req.session.destroy((err) => {
+        if (err) {
+          console.error("Error destroying session:", err);
+          throw new Error("Failed to logout user.");
+        }
+      });
 
+      console.log("User session destroyed successfully.");
+      return { success: true, message: "User logged out successfully." };
+    } catch (error) {
+      console.error("Error in logout:", error.message);
+      throw error;
+    }
+  }
+}
 module.exports = AuthAdminService;

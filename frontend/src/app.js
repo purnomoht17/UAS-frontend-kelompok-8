@@ -3,88 +3,77 @@ var app = angular.module("myApp", ["ui.router"]);
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
+  // Atur default route jika tidak ada route yang cocok
   $urlRouterProvider.otherwise("/home");
 
-  $stateProvider
-    .state("home", {
-      url: "/home",
-      templateUrl: "views/home.html",
-      controller: "HomeController",
-    })
-    .state("about", {
-      url: "/about",
-      templateUrl: "views/about.html",
-      controller: "AboutController",
-    })
+  // Definisikan state hanya untuk signup
+    $stateProvider
+    .state("signup", {
+      url: "/signup",
+      templateUrl: "views/signup.html",  // Pastikan path template sesuai
+      controller: "SignupController",  // Controller untuk signup
+    });
+
+    $stateProvider
+    .state("signupAdmin", {
+      url: "/signupAdmin",
+      templateUrl: "views/signupAdmin.html",  // Pastikan path template sesuai
+      controller: "SignupAdminController",    // Pastikan controller sesuai
+    });
+    
+    $stateProvider
     .state("login", {
       url: "/login",
-      templateUrl: "views/login.html",
-      controller: "LoginController",
-    })
-    .state("register", {
-      url: "/register",
-      templateUrl: "views/register.html",
-      controller: "RegisterController",
-    })
-    .state("transaction", {
-      url: "/transaction",
-      templateUrl: "views/transaction.html",
-      controller: "TransactionController",
-    })
-    .state("settings", {
-      url: "/settings",
-      templateUrl: "views/settings.html",
-      controller: "SettingsController",
-    })
-    .state("dashboard", {
-      url: "/dashboard",
-      templateUrl: "views/dashboard.html",
-      controller: "DashboardController",
-      abstract: true,
-    })
-    .state("dashboard.overview", {
-      url: "/overview",
-      views: {
-        "content@dashboard": {
-          templateUrl: "views/overview.html",
-          controller: "OverviewController",
-        },
-      },
-    })
-    .state("dashboard.transactions", {
-      url: "/transactions",
-      views: {
-        "content@dashboard": {
-          templateUrl: "views/transaction.html",
-          controller: "transactionController",
-        },
-      },
-    })
-    .state("dashboard.settings", {
-      url: "/settings",
-      views: {
-        "content@dashboard": {
-          templateUrl: "views/settings.html",
-          controller: "transactionController",
-        },
-      },
-    })
-    .state("dashboard.budgets", {
-      url: "/budgets",
-      views: {
-        "content@dashboard": {
-          templateUrl: "views/budget.html",
-          controller: "transactionController",
-        },
-      },
-    })
-    .state("dashboard.debts", {
-      url: "/debts",
-      views: {
-        "content@dashboard": {
-          templateUrl: "views/debt.html",
-          controller: "debtController",
-        },
-      },
-    })
+      templateUrl: "views/login.html",  // Pastikan path template sesuai
+      controller: "LoginController",  // Controller untuk signup
+    });
+
+    $stateProvider
+    .state("loginAdmin", {
+      url: "/loginAdmin",
+      templateUrl: "views/loginAdmin.html",  // Pastikan path template sesuai
+      controller: "LoginAdminController",  // Controller untuk signup
+    });
+
+    $stateProvider
+    .state("home", {
+      url: "/home",
+      templateUrl: "views/home.html",  // Pastikan path template sesuai
+      controller: "HomeController",  // Controller untuk signup
+    });
+
+    $stateProvider
+    .state("homeAdmin", {
+      url: "/homeAdmin",
+      templateUrl: "views/homeAdmin.html",  // Path template homeAdmin
+      controller: "HomeAdminController"  // Controller untuk homeAdmin
+  });
+
+    $stateProvider
+    .state("about", {
+      url: "/about",
+      templateUrl: "views/about.html",  // Pastikan path template sesuai
+      controller: "AboutController",  // Controller untuk signup
+    });
+
+    $stateProvider
+    .state("contact", {
+      url: "/contact",
+      templateUrl: "views/contact.html",  // Pastikan path template sesuai
+      controller: "ContactController",  // Controller untuk signup
+    });
+
+    $stateProvider
+    .state("subscribe", {
+      url: "/subscribe",
+      templateUrl: "views/subscribe.html",  // Pastikan path template sesuai
+      controller: "SubscribeController",  // Controller untuk signup
+    });
+
+    $stateProvider
+    .state("article", {
+      url: "/article/:id",  // Menambahkan parameter :id pada URL
+      templateUrl: "views/article.html",  // Path template sesuai
+      controller: "HomeController",  // Controller untuk artikel
+    });
 });

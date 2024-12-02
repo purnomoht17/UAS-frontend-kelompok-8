@@ -51,13 +51,6 @@ exports.up = (pgm) => {
     image_cover: {
       type: "varchar(255)",
     },
-    images: {
-      type: "text[]", // Array of text
-    },
-    start_dates: {
-      type: "timestamptz[]", 
-      notNull: true,
-    },
     created_at: {
       type: "timestamp",
       notNull: true,

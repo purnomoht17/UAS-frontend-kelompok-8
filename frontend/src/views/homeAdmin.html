@@ -1,0 +1,55 @@
+<div ng-controller="HomeAdminController">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Admin Dashboard - Tour Management</h1>
+
+        <!-- Menampilkan Daftar Tour -->
+        <div class="mb-4">
+            <h3>List of Tours</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tour Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="tour in tours">
+                        <th scope="row">{{ $index + 1 }}</th>
+                        <td>{{ tour.name }}</td>
+                        <td>{{ tour.description }}</td>
+                        <td>{{ tour.price | currency }}</td>
+                        <td>
+                            <!-- Tombol untuk Update Tour -->
+                            <button ng-click="editTour(tour)" class="btn btn-warning btn-sm">Edit</button>
+                            <!-- Tombol untuk Hapus Tour -->
+                            <button ng-click="deleteTour(tour.id)" class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Form untuk Menambah Tour -->
+        <div class="mt-4">
+            <h3>Add New Tour</h3>
+            <form ng-submit="addTour()">
+                <div class="mb-3">
+                    <label for="tourName" class="form-label">Tour Name</label>
+                    <input type="text" id="tourName" ng-model="newTour.name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tourDescription" class="form-label">Description</label>
+                    <textarea id="tourDescription" ng-model="newTour.description" class="form-control" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="tourPrice" class="form-label">Price</label>
+                    <input type="number" id="tourPrice" ng-model="newTour.price" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success">Add Tour</button>
+            </form>
+        </div>
+    </div>
+</div>

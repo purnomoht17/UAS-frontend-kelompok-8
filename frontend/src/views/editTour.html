@@ -1,0 +1,20 @@
+<div ng-controller="EditTourController">
+    <div class="container mt-5">
+        <h1>Edit Tour</h1>
+        <form ng-submit="updateTour()">
+            <div class="mb-3">
+                <label for="tourName" class="form-label">Tour Name</label>
+                <input type="text" id="tourName" ng-model="tour.name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="tourDescription" class="form-label">Description</label>
+                <textarea id="tourDescription" ng-model="tour.description" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="tourPrice" class="form-label">Price</label>
+                <input type="number" id="tourPrice" ng-model="tour.price" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Update Tour</button>
+        </form>
+    </div>
+</div>
