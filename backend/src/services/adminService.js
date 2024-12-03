@@ -8,8 +8,8 @@ class AdminService {
   }
 
   // Mendapatkan admin berdasarkan username
-  static async getAdminByUsername(username) {
-    return AdminRepository.getAdminByUsername(username);
+  static async getAdminById(id) {
+    return AdminRepository.getAdminById(id);
   }
 
   // Membuat admin baru

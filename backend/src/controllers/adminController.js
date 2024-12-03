@@ -5,17 +5,20 @@ class AdminController {
   static async getAllAdmins(req, res) {
     try {
       const admins = await AdminService.getAllAdmins();
+      if (!admins) {
+        return res.status(404).json({ message: 'No admins found' });
+      }
       res.status(200).json(admins);
     } catch (error) {
       res.status(500).json({ message: 'Error retrieving admins', error: error.message });
     }
   }
 
-  // Endpoint untuk mendapatkan admin berdasarkan username
-  static async getAdminByUsername(req, res) {
+  // Endpoint untuk mendapatkan admin berdasarkan ID
+  static async getAdminById(req, res) {
     try {
-      const { username } = req.params;
-      const admin = await AdminService.getAdminByUsername(username);
+      const { id } = req.params;
+      const admin = await AdminService.getAdminById(id);
       if (!admin) {
         return res.status(404).json({ message: 'Admin not found' });
       }
@@ -36,12 +39,12 @@ class AdminController {
     }
   }
 
-  // Endpoint untuk mengupdate admin
+  // Endpoint untuk mengupdate admin berdasarkan ID
   static async updateAdmin(req, res) {
     try {
-      const { username } = req.params;
-      const { email, password } = req.body;
-      const updatedAdmin = await AdminService.updateAdmin(username, email, password);
+      const { id } = req.params;
+      const { username, email, password } = req.body;
+      const updatedAdmin = await AdminService.updateAdmin(id, username, email, password);
       if (!updatedAdmin) {
         return res.status(404).json({ message: 'Admin not found' });
       }
@@ -51,15 +54,15 @@ class AdminController {
     }
   }
 
-  // Endpoint untuk menghapus admin
+  // Endpoint untuk menghapus admin berdasarkan ID
   static async deleteAdmin(req, res) {
     try {
-      const { username } = req.params;
-      const deletedAdmin = await AdminService.deleteAdmin(username);
+      const { id } = req.params;
+      const deletedAdmin = await AdminService.deleteAdmin(id);
       if (!deletedAdmin) {
         return res.status(404).json({ message: 'Admin not found' });
       }
-      res.status(200).json({ message: 'Admin deleted successfully' });
+      res.status(200).json({ message: 'Admin deleted successfully', admin: deletedAdmin });
     } catch (error) {
       res.status(500).json({ message: 'Error deleting admin', error: error.message });
     }

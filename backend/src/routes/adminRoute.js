@@ -4,11 +4,19 @@ const AdminMiddleware = require('../middleware/adminMiddleware');
 
 const router = express.Router();
 
-// Menambahkan verifikasi token untuk semua route terkait admin, kecuali login
-router.get('/', AdminMiddleware.verifyAdminToken, AdminController.getAllAdmins);
-router.get('/:username', AdminMiddleware.verifyAdminToken, AdminController.getAdminByUsername);
+// Route untuk mendapatkan semua admin
+router.get('/', AdminController.getAllAdmins);
+
+// Route untuk mendapatkan admin berdasarkan ID
+router.get('/:id', AdminController.getAdminById);
+
+// Route untuk membuat admin baru (tidak memerlukan token)
 router.post('/', AdminController.createAdmin);
-router.put('/:username', AdminMiddleware.verifyAdminToken, AdminController.updateAdmin);
-router.delete('/:username', AdminMiddleware.verifyAdminToken, AdminController.deleteAdmin);
+
+// Route untuk mengupdate admin berdasarkan ID
+router.put('/:id', AdminController.updateAdmin);
+
+// Route untuk menghapus admin berdasarkan ID
+router.delete('/:id', AdminController.deleteAdmin);
 
 module.exports = router;

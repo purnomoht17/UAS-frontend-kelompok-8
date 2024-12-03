@@ -1,10 +1,9 @@
 const db = require('../config/database');
 
 class AdminRepository {
-
   // Mendapatkan semua admin
   static async getAllAdmins() {
-    const query = "SELECT username, email, created_at, updated_at FROM admins";
+    const query = "SELECT * FROM admins";
     const result = await db.query(query);
     if (result.rows.length === 0) {
       return null; // Menandakan tidak ada admin
@@ -14,8 +13,15 @@ class AdminRepository {
 
   // Mendapatkan admin berdasarkan ID
   static async getAdminById(id) {
-    const query = "SELECT username, email, password, created_at, updated_at FROM admins WHERE username = $1";
+    const query = `
+      SELECT id, username, email, password, created_at, updated_at 
+      FROM admins 
+      WHERE id = $1
+    `;
     const result = await db.query(query, [id]);
+    if (result.rows.length === 0) {
+      return null; // Admin dengan ID tertentu tidak ditemukan
+    }
     return result.rows[0];
   }
 
@@ -24,31 +30,36 @@ class AdminRepository {
     const query = `
       INSERT INTO admins (username, email, password)
       VALUES ($1, $2, $3)
-      RETURNING username, email, created_at, updated_at
+      RETURNING id, username, email, created_at, updated_at
     `;
     const result = await db.query(query, [username, email, password]);
     return result.rows[0];
   }
 
-  // Memperbarui informasi admin
-  static async updateAdmin(username, email, password) {
+  // Memperbarui informasi admin berdasarkan ID
+  static async updateAdmin(id, username, email, password) {
     const query = `
       UPDATE admins
-      SET email = $2, password = $3, updated_at = NOW()
-      WHERE username = $1
-      RETURNING username, email, created_at, updated_at
+      SET username = $2, email = $3, password = $4, updated_at = NOW()
+      WHERE id = $1
+      RETURNING id, username, email, created_at, updated_at
     `;
-    const result = await db.query(query, [username, email, password]);
+    const result = await db.query(query, [id, username, email, password]);
+    if (result.rows.length === 0) {
+      return null; // Tidak ada admin dengan ID tersebut
+    }
     return result.rows[0];
   }
 
-  // Menghapus admin berdasarkan username
-  static async deleteAdmin(username) {
-    const query = "DELETE FROM admins WHERE username = $1 RETURNING username";
-    const result = await db.query(query, [username]);
+  // Menghapus admin berdasarkan ID
+  static async deleteAdmin(id) {
+    const query = "DELETE FROM admins WHERE id = $1 RETURNING id, username";
+    const result = await db.query(query, [id]);
+    if (result.rows.length === 0) {
+      return null; // Tidak ada admin dengan ID tersebut
+    }
     return result.rows[0];
   }
-
 }
 
 module.exports = AdminRepository;

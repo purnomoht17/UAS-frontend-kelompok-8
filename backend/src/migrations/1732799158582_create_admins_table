@@ -9,6 +9,10 @@ exports.shorthands = undefined;
  */
 exports.up = (pgm) => {
   pgm.createTable("admins", {
+    id: {
+      type: "serial",
+      primaryKey: true,
+    },
     username: {
       type: "varchar(100)",
       notNull: true,
