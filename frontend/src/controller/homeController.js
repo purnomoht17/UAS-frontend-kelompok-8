@@ -85,15 +85,15 @@ angular.module("myApp").controller("HomeController", [
                 });
         }
 
-        // Fungsi untuk memeriksa login sebelum mengakses link "Learn More"
         $scope.checkLogin = function() {
             if (!token) {
                 // Menampilkan peringatan jika belum login
-                alert("You need to login first to view this page.");
+                $window.alert("You need to login first to view this page.");
                 // Redirect ke halaman login
-                $window.location.href = '/login';
+                $window.location.href = '/';
             }
         };
+        
 
         // Fungsi untuk logout
         $scope.logout = function() {

@@ -1,4 +1,3 @@
-// Mendeklarasikan controller HomeAdminController
 app.controller("HomeAdminController", [
     "$scope",
     "$http",
@@ -7,8 +6,12 @@ app.controller("HomeAdminController", [
       // Inisialisasi variabel
       $scope.newTour = {
         name: "",
-        description: "",
+        duration: 0,
+        max_group_size: 0,
+        difficulty: "",
         price: 0,
+        summary: "",
+        description: "",
       };
       $scope.tours = []; // Array untuk menyimpan daftar tours
       $scope.isLoading = true; // Indikator pemuatan data
@@ -20,7 +23,6 @@ app.controller("HomeAdminController", [
         $http
           .get("http://localhost:3000/api/tours/")
           .then(function (response) {
-            // Validasi struktur respons
             if (response.data && response.data.data) {
               $scope.tours = response.data.data; // Ambil daftar tours dari respons
             } else {
@@ -30,47 +32,68 @@ app.controller("HomeAdminController", [
           })
           .catch(function (error) {
             console.error("Failed to fetch tours:", error);
-            $scope.tours = []; // Kosongkan daftar jika terjadi error
-            $scope.errorMessage = error.data?.message || "Failed to load tours. Please try again.";
+            $scope.tours = [];
+            $scope.errorMessage = error.data?.message || "Failed to load tours.";
           })
           .finally(function () {
             $scope.isLoading = false; // Set loading ke false setelah selesai
           });
       };
   
-      // Fungsi untuk menambah tour baru
+      // Fungsi untuk menambahkan tour baru
       $scope.addTour = function () {
-        const newTourData = {
-          name: $scope.newTour.name,
-          description: $scope.newTour.description,
-          price: $scope.newTour.price,
-        };
+        const formData = new FormData();
+        formData.append("name", $scope.newTour.name);
+        formData.append("duration", $scope.newTour.duration);
+        formData.append("max_group_size", $scope.newTour.max_group_size);
+        formData.append("difficulty", $scope.newTour.difficulty);
+        formData.append("price", $scope.newTour.price);
+        formData.append("summary", $scope.newTour.summary);
+        formData.append("description", $scope.newTour.description);
+  
+        // Menambahkan file gambar jika ada
+        if ($scope.newTour.imageCover) {
+          formData.append("imageCover", $scope.newTour.imageCover);
+        }
+  
+        const token = localStorage.getItem("authToken");
   
         $http
-          .post("http://localhost:3000/api/tours", newTourData)
+          .post("http://localhost:3000/api/tours", formData, {
+            headers: {
+              "Content-Type": undefined,
+              Authorization: `Bearer ${token}`,
+            },
+          })
           .then(function (response) {
-            alert("Tour added successfully!");
-            $scope.getTours(); // Refresh daftar tours
-            $scope.newTour = { name: "", description: "", price: 0 }; // Reset form
+            console.log("Tour added:", response.data);
+            $scope.tours.push(response.data);
+            $scope.newTour = {}; // Reset form setelah data berhasil dikirim
           })
           .catch(function (error) {
-            console.error("Failed to add tour:", error);
-            alert(error.data?.message || "Failed to add tour. Please try again.");
+            console.error("Error adding tour:", error);
+            $scope.errorMessage = error.data?.message || "Failed to add tour.";
           });
       };
   
       // Fungsi untuk menghapus tour
       $scope.deleteTour = function (tourId) {
         if (confirm("Are you sure you want to delete this tour?")) {
+          const token = localStorage.getItem("authToken");
+  
           $http
-            .delete(`http://localhost:3000/api/tours/${tourId}`)
-            .then(function (response) {
+            .delete(`http://localhost:3000/api/tours/${tourId}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then(function () {
               alert("Tour deleted successfully!");
               $scope.getTours(); // Refresh daftar tours
             })
             .catch(function (error) {
               console.error("Failed to delete tour:", error);
-              alert(error.data?.message || "Failed to delete tour. Please try again.");
+              alert(error.data?.message || "Failed to delete tour.");
             });
         }
       };

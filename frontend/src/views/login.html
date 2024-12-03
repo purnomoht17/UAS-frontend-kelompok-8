@@ -2,6 +2,18 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
+                <!-- Alert untuk sukses -->
+                <div class="alert alert-success" ng-if="successMessage" role="alert">
+                    <h4 class="alert-heading">Success!</h4>
+                    <p>{{ successMessage }}</p>
+                </div>
+                
+                <!-- Alert untuk error -->
+                <div class="alert alert-danger" ng-if="errorMessage" role="alert">
+                    <h4 class="alert-heading">Error!</h4>
+                    <p>{{ errorMessage }}</p>
+                </div>
+
                 <h1 class="text-center mb-4">Login</h1>
                 <form ng-submit="login()" class="shadow-sm p-4 rounded bg-white">
                     <div class="mb-3">
@@ -19,4 +31,5 @@
             </div>
         </div>
     </div>
+    <br><br><br><br><br><br><br><br><br><br>
 </div>

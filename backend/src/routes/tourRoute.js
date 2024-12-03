@@ -15,7 +15,6 @@ router.get('/:id', AuthMiddleware.verifyToken, TourController.getTourById);
 
 // Membuat tur baru, hanya dapat diakses oleh admin dan menambahkan upload gambar
 router.post('/', AuthAdminMiddleware.verifyAdminToken, upload.single('imageCover'), async (req, res, next) => {
-  // Jika ada file yang diupload, pastikan file itu ada
   if (req.file) {
     req.body.imageCover = req.file.filename; // Menyimpan nama file untuk digunakan di controller
   }
@@ -24,7 +23,6 @@ router.post('/', AuthAdminMiddleware.verifyAdminToken, upload.single('imageCover
 
 // Mengupdate tur berdasarkan ID, hanya dapat diakses oleh admin, dengan kemungkinan upload gambar
 router.put('/:id', AuthAdminMiddleware.verifyAdminToken, upload.single('imageCover'), async (req, res, next) => {
-  // Jika ada file yang diupload, pastikan file itu ada
   if (req.file) {
     req.body.imageCover = req.file.filename; // Menyimpan nama file untuk digunakan di controller
   }

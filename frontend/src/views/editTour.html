@@ -1,20 +1,104 @@
 <div ng-controller="EditTourController">
     <div class="container mt-5">
-        <h1>Edit Tour</h1>
-        <form ng-submit="updateTour()">
-            <div class="mb-3">
-                <label for="tourName" class="form-label">Tour Name</label>
-                <input type="text" id="tourName" ng-model="tour.name" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="tourDescription" class="form-label">Description</label>
-                <textarea id="tourDescription" ng-model="tour.description" class="form-control" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="tourPrice" class="form-label">Price</label>
-                <input type="number" id="tourPrice" ng-model="tour.price" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-success">Update Tour</button>
-        </form>
+      <h1>Edit Tour</h1>
+      <form ng-submit="updateTour()">
+        <div class="mb-3">
+          <label for="tourName" class="form-label">Tour Name</label>
+          <input
+            type="text"
+            id="tourName"
+            ng-model="tour.name"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tourSummary" class="form-label">Summary</label>
+          <textarea
+            id="tourSummary"
+            ng-model="tour.summary"
+            class="form-control"
+            required
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="tourDescription" class="form-label">Description</label>
+          <textarea
+            id="tourDescription"
+            ng-model="tour.description"
+            class="form-control"
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="tourPrice" class="form-label">Price</label>
+          <input
+            type="number"
+            id="tourPrice"
+            ng-model="tour.price"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tourDuration" class="form-label">Duration (days)</label>
+          <input
+            type="number"
+            id="tourDuration"
+            ng-model="tour.duration"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tourGroupSize" class="form-label">Max Group Size</label>
+          <input
+            type="number"
+            id="tourGroupSize"
+            ng-model="tour.max_group_size"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tourDifficulty" class="form-label">Difficulty</label>
+          <input
+            type="text"
+            id="tourDifficulty"
+            ng-model="tour.difficulty"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tourRatingsAvg" class="form-label">Ratings Average</label>
+          <input
+            type="number"
+            step="0.01"
+            id="tourRatingsAvg"
+            ng-model="tour.ratings_average"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tourRatingsQty" class="form-label">Ratings Quantity</label>
+          <input
+            type="number"
+            id="tourRatingsQty"
+            ng-model="tour.ratings_quantity"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tourImageCover" class="form-label">Image Cover</label>
+          <input
+            type="text"
+            id="tourImageCover"
+            ng-model="tour.image_cover"
+            class="form-control"
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Update Tour</button>
+      </form>
     </div>
-</div>
+  </div>
+  

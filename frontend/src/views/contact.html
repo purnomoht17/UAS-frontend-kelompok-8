@@ -3,28 +3,56 @@
         <h1 class="fw-bold text-center">Contact Us</h1>
         <p class="text-center">We'd love to hear from you! Please fill out the form below, and we'll get back to you as soon as possible.</p>
 
-        <div id="success-alert" class="alert alert-success d-none" role="alert">
+        <!-- Alert untuk pesan sukses -->
+        <div
+            class="alert alert-success"
+            role="alert"
+            ng-show="successMessage"
+        >
             <h4 class="alert-heading">Success!</h4>
-            <p>Your message has been sent successfully.</p>
+            <p>{{ successMessage }}</p>
         </div>
 
         <div class="row mt-5">
             <div class="col-md-6">
                 <h5 class="fw-bold">Get in Touch</h5>
-                <form id="contact-form">
+                <form ng-submit="addContact()">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            placeholder="Your Name"
+                            ng-model="newContact.firstName"
+                            required
+                        />
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="Your Email"
+                            ng-model="newContact.email"
+                            required
+                        />
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+                        <textarea
+                            class="form-control"
+                            id="message"
+                            rows="4"
+                            placeholder="Your Message"
+                            ng-model="newContact.message"
+                            required
+                        ></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                    </button>
                 </form>
             </div>
 
