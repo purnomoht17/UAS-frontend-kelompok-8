@@ -3,22 +3,75 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h5>About Us</h5>
-                <p>Your go-to resource for all things hiking and outdoor adventures.</p>
+                <h5 class="text-orange">About Us</h5>
+                <p class="text-orange">Your go-to resource for all things hiking and outdoor adventures.</p>
             </div>
             <div class="col-md-4">
-                <h5>Quick Links</h5>
+                <h5 class="text-orange">Quick Links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="/" class="text-white">Home</a></li>
-                    <li><a href="/about" class="text-white">About</a></li>
-                    <li><a href="/contact" class="text-white">Contact</a></li>
+                    <li><a href="/" class="text-orange">Home</a></li>
+                    <li><a href="/about" class="text-orange">About</a></li>
+                    <li><a href="/contact" class="text-orange">Contact</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
-                <h5>Contact Us</h5>
-                <p>Email: info@lifestylehub.com</p>
-                <p>Phone: +62 123 456 789</p>
+                <h5 class="text-orange">Contact Us</h5>
+                <p class="text-orange">Email: info@lifestylehub.com</p>
+                <p class="text-orange">Phone: +62 123 456 789</p>
             </div>
         </div>
     </div>
 </footer>
+
+<style>
+    /* Footer Styles */
+    footer.bg-dark {
+        background-color: #2c3e50; /* Dark background color */
+        color: #fff; /* Text color */
+    }
+
+    footer h5, footer p, footer a {
+        color: #f39c12; /* Orange text color */
+    }
+
+    footer h5 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    footer p {
+        font-size: 1rem;
+        color: #f39c12; /* Set paragraph text color to orange */
+    }
+
+    footer ul {
+        padding-left: 0;
+        list-style: none; /* Remove bullet points from list */
+    }
+
+    footer ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: #f39c12; /* Set link color to orange */
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: #e67e22; /* Darker orange on hover */
+    }
+
+    /* Responsive Design for Footer */
+    @media (max-width: 768px) {
+        footer .row {
+            text-align: center;
+        }
+
+        footer .col-md-4 {
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>

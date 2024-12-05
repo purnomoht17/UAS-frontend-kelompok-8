@@ -23,24 +23,60 @@
     </div>
 </header>
 
+
 <style>
-    .nav-link:hover {
-        text-decoration: underline;
+   /* General Navbar Styles */
+header.bg-light {
+    background-color: #f8f9fa; /* Background navbar */
+    border-bottom: 2px solid #ddd; /* Pembatas di bawah navbar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow untuk memberi efek kedalaman */
+}
+
+/* Navbar Container */
+header .container {
+    max-width: 1140px; /* Ukuran maksimal container */
+    margin: 0 auto;
+}
+
+/* Navbar Links */
+.nav-link {
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transisi yang halus untuk hover */
+    padding: 12px 16px; /* Ukuran padding */
+    border-radius: 8px; /* Membuat sudut link lebih lembut */
+    font-weight: 500; /* Font yang sedikit tebal */
+    text-transform: uppercase; /* Menjadikan teks menjadi huruf kapital */
+}
+
+.nav-link:hover {
+    text-decoration: none; /* Menghapus underline saat hover */
+    background-color: #3498db; /* Warna latar belakang saat hover */
+    color: #fff; /* Warna teks saat hover */
+    transform: scale(1.05); /* Efek sedikit membesar */
+}
+
+/* User Name and Login/Logout Button */
+.user-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding-left: 10px;
+    border-left: 2px solid #34495e;
+    color: #34495e; /* Menambahkan warna pada nama pengguna */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: center;
     }
+
+    .nav-link {
+        margin: 5px 0;
+        font-size: 1rem; /* Menyesuaikan ukuran font pada mobile */
+    }
+
     .user-name {
-        font-weight: bold;
-        font-size: 1.1rem;
-        padding-left: 10px;
-        border-left: 2px solid #54595e;
+        font-size: 1rem; /* Menyesuaikan ukuran font nama pengguna */
     }
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-        .nav {
-            flex-direction: column;
-            align-items: center;
-        }
-        .nav-link {
-            margin: 5px 0;
-        }
-    }
+}
 </style>
