@@ -1,28 +1,27 @@
-<div ng-controller="LoginController">
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <!-- Alert untuk sukses -->
+<div ng-controller="LoginController" class="container-fluid" style="font-family: sans-serif, Arial, Helvetica, sans-serif;">
+    <div class="row vh-100">
+        <!-- Bagian Gambar -->
+        <div class="col-md-6 d-none d-md-block" style="background: url('../images/nature1.jpg') center/cover no-repeat;"></div>
+        <!-- Bagian Form -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="w-75">
+                <h1 class="text-center mb-4">Login</h1>
                 <div class="alert alert-success" ng-if="successMessage" role="alert">
                     <h4 class="alert-heading">Success!</h4>
                     <p>{{ successMessage }}</p>
                 </div>
-                
-                <!-- Alert untuk error -->
                 <div class="alert alert-danger" ng-if="errorMessage" role="alert">
                     <h4 class="alert-heading">Error!</h4>
                     <p>{{ errorMessage }}</p>
                 </div>
-
-                <h1 class="text-center mb-4">Login</h1>
-                <form ng-submit="login()" class="shadow-sm p-4 rounded bg-white">
+                <form ng-submit="login()" >
                     <div class="mb-3">
                         <label for="email" class="form-label">Email:</label>
-                        <input type="email" id="email" name="email" class="form-control" ng-model="user.email" required>
+                        <input type="email" id="email" class="form-control" ng-model="user.email" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control" ng-model="user.password" required>
+                        <input type="password" id="password" class="form-control" ng-model="user.password" required>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
@@ -31,5 +30,4 @@
             </div>
         </div>
     </div>
-    <br><br><br><br><br><br><br><br><br><br>
 </div>
