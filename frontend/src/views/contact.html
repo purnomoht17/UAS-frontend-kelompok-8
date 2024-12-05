@@ -1,70 +1,74 @@
-<div class="bg-light py-5" ng-controller="ContactController">
-    <div class="container">
-        <h1 class="fw-bold text-center">Contact Us</h1>
-        <p class="text-center">We'd love to hear from you! Please fill out the form below, and we'll get back to you as soon as possible.</p>
+<div class="container py-5" ng-controller="ContactController">
+    <h1 class="fw-bold text-center mb-4">Contact Us</h1>
 
-        <!-- Alert untuk pesan sukses -->
-        <div
-            class="alert alert-success"
-            role="alert"
-            ng-show="successMessage"
-        >
-            <h4 class="alert-heading">Success!</h4>
-            <p>{{ successMessage }}</p>
+    <!-- Alert untuk pesan sukses -->
+    <div class="alert alert-success" role="alert" ng-show="successMessage">
+        <h4 class="alert-heading">Success!</h4>
+        <p>{{ successMessage }}</p>
+    </div>
+
+    <div class="row">
+        <!-- Formulir Kontak -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form ng-submit="addContact()">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                placeholder="Your Name"
+                                ng-model="newContact.firstName"
+                                required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                placeholder="Your Email"
+                                ng-model="newContact.email"
+                                required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea
+                                class="form-control"
+                                id="message"
+                                rows="4"
+                                placeholder="Your Message"
+                                ng-model="newContact.message"
+                                required
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <div class="row mt-5">
-            <div class="col-md-6">
-                <h5 class="fw-bold">Get in Touch</h5>
-                <form ng-submit="addContact()">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="name"
-                            placeholder="Your Name"
-                            ng-model="newContact.firstName"
-                            required
-                        />
+        <!-- Informasi Kontak -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-4">Contact Information</h5>
+                    <p><strong>Email:</strong> jessenlife@gmail.com</p>
+                    <p><strong>Phone:</strong> +123 456 7890</p>
+                    <p><strong>Address:</strong> 123 Adventure St, Nature City, NC 12345</p>
+                    <h5 class="fw-bold mt-4">Follow Us</h5>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-outline-secondary me-2">Facebook</a>
+                        <a href="#" class="btn btn-outline-secondary me-2">Twitter</a>
+                        <a href="#" class="btn btn-outline-secondary">Instagram</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            placeholder="Your Email"
-                            ng-model="newContact.email"
-                            required
-                        />
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea
-                            class="form-control"
-                            id="message"
-                            rows="4"
-                            placeholder="Your Message"
-                            ng-model="newContact.message"
-                            required
-                        ></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        Send Message
-                    </button>
-                </form>
-            </div>
-
-            <div class="col-md-6">
-                <h5 class="fw-bold">Contact Information</h5>
-                <p><strong>Email:</strong> info@example.com</p>
-                <p><strong>Phone:</strong> +123 456 7890</p>
-                <p><strong>Address:</strong> 123 Adventure St, Nature City, NC 12345</p>
-                <h5 class="fw-bold mt-4">Follow Us</h5>
-                <a href="#" class="btn btn-outline-secondary me-2">Facebook</a>
-                <a href="#" class="btn btn-outline-secondary me-2">Twitter</a>
-                <a href="#" class="btn btn-outline-secondary">Instagram</a>
+                </div>
             </div>
         </div>
     </div>
