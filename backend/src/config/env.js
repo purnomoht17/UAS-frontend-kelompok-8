@@ -7,7 +7,7 @@ if (envFound.error) {
 }
 
 module.exports = {
-    user: process.env.USER,
+    user: process.env.DB_USER,
     port: process.env.PORT,
     host: process.env.HOST,
     database: process.env.DATABASE,
