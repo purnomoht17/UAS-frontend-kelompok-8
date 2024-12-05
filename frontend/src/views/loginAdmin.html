@@ -1,16 +1,17 @@
-<div ng-controller="LoginAdminController">
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+<div ng-controller="LoginAdminController" class="container-fluid" style="font-family: sans-serif, Arial, Helvetica, sans-serif;">
+    <div class="row vh-100">
+        <div class="col-md-6 d-none d-md-block" style="background: url('../images/nature1.jpg') center/cover no-repeat;"></div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="w-75">
                 <h1 class="text-center mb-4">Admin Login</h1>
-                <form ng-submit="login()" class="shadow-sm p-4 rounded bg-white">
+                <form ng-submit="login()" >
                     <div class="mb-3">
                         <label for="username" class="form-label">Username:</label>
-                        <input type="text" id="username" name="username" class="form-control" ng-model="admin.username" required>
+                        <input type="text" id="username" class="form-control" ng-model="admin.username" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control" ng-model="admin.password" required>
+                        <input type="password" id="password" class="form-control" ng-model="admin.password" required>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
